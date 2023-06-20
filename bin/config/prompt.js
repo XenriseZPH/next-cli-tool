@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var inquirer_1 = __importDefault(require("inquirer"));
-var createConfig_1 = __importDefault(require("./createConfig"));
-var prompt = function (callback) {
+const inquirer_1 = __importDefault(require("inquirer"));
+const createConfig_1 = __importDefault(require("./createConfig"));
+const prompt = (callback) => {
     inquirer_1.default
         .prompt([
         {
@@ -58,7 +58,7 @@ var prompt = function (callback) {
             default: false,
         },
     ])
-        .then(function (answers) {
+        .then(answers => {
         callback ? callback(answers) : (0, createConfig_1.default)(answers);
     });
 };

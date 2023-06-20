@@ -131,3 +131,5 @@ dist
 .pnp.*
 
 next.json
+
+bin/

@@ -28,10 +28,8 @@
     "access": "public"
   },
   "main": "bin/index.js",
-  "bin": "bin/index.js",
-  "engines": {
-    "npm": "use Yarn!",
-    "node": ">= 16"
+  "bin": {
+    "nextjs": "./bin/index.js"
   },
   "scripts": {
     "build": "rimraf ./bin && tsc -p .",

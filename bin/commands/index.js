@@ -18,25 +18,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-var path_1 = require("path");
-var fs_1 = require("fs");
-var createProgram_1 = __importDefault(require("./createProgram"));
-var generator_1 = require("./generator");
+const path_1 = require("path");
+const fs_1 = require("fs");
+const createProgram_1 = __importDefault(require("./createProgram"));
+const generator_1 = require("./generator");
 exports.default = createProgram_1.default;
 __exportStar(require("./generator"), exports);
-var run = function (config) {
-    var pkgPath = (0, path_1.resolve)(process.cwd(), 'package.json');
-    var pkg = (0, fs_1.readFileSync)(pkgPath, { encoding: 'utf-8' });
-    var program = (0, createProgram_1.default)(JSON.parse(pkg));
-    var generatorCommand = program.command('generate <type>').alias('g');
-    if (config.modules.includes('components'))
-        (0, generator_1.generateComponent)(generatorCommand);
-    if (config.modules.includes('pages'))
-        (0, generator_1.generatePage)(generatorCommand);
-    if (config.modules.includes('hooks'))
-        (0, generator_1.generateHook)(generatorCommand);
-    if (config.modules.includes('higher-order components'))
-        (0, generator_1.generateHoc)(generatorCommand);
+const run = () => {
+    const pkgPath = (0, path_1.resolve)(process.cwd(), 'package.json');
+    const pkg = (0, fs_1.readFileSync)(pkgPath, { encoding: 'utf-8' });
+    const program = (0, createProgram_1.default)(JSON.parse(pkg));
+    const generatorCommand = program.command('cli <type>').alias('g');
+    (0, generator_1.generateComponent)(generatorCommand);
+    (0, generator_1.generatePage)(generatorCommand);
+    (0, generator_1.generateHook)(generatorCommand);
     generatorCommand.description('Defines what type of component to generate');
     program.parse();
 };

@@ -1,0 +1,19 @@
+import { useState } from 'react';
+
+export function useTemplate() {
+  const [loading, setLoading] = useState(false);
+
+  const getHookMethod = async () => {
+    // Create method logic here
+    // e.g setLoading(true);
+  };
+
+  return [
+    {
+      loading,
+    },
+    {
+      getHookMethod,
+    },
+  ];
+}
